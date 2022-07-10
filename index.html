@@ -210,6 +210,8 @@
       console.log("You gained " + scoretoadd + " points this round.")
       if (level > 1)
         setTimeout(reset, 750)
+      else
+        reset();
     } else {
       resetfull();
     }
