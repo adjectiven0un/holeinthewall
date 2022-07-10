@@ -208,7 +208,7 @@
     if (level > 0)
       setTimeout(reset, 750)
     else 
-      reset()
+      resetfull()
     }
     }
   function reset(){
@@ -274,6 +274,7 @@
     level = 1;
     music.pause();
     music.currentTime = 0;
+    started = false;
     console.log("Reset everything");
   }
 
