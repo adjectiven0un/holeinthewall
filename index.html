@@ -190,30 +190,30 @@
     }
     if (timer > 0) {
 
-    for (var i = 0; i < 28; i++){
-      if (activearray[i] == 1 && templateblocks[i] == 1){
-        document.getElementById(i + 1).style.backgroundColor = "#00FF00"
-        scoretoadd++;
+      for (var i = 0; i < 28; i++){
+        if (activearray[i] == 1 && templateblocks[i] == 1){
+          document.getElementById(i + 1).style.backgroundColor = "#00FF00"
+          scoretoadd++;
+        }
+        if (activearray[i] == 1 && templateblocks[i] == 0){
+          document.getElementById(i + 1).style.backgroundColor = "#FF0000"
+          scoretoadd--;
+        }
+        if (activearray[i] == 0 && templateblocks[i] == 1){
+          document.getElementById(i + 1).style.backgroundColor = "#FFFF00"
+        }
       }
-      if (activearray[i] == 1 && templateblocks[i] == 0){
-        document.getElementById(i + 1).style.backgroundColor = "#FF0000"
-        scoretoadd--;
-      }
-      if (activearray[i] == 0 && templateblocks[i] == 1){
-        document.getElementById(i + 1).style.backgroundColor = "#FFFF00"
-      }
+      if (scoretoadd < 0)
+        scoretoadd = 0;
+      score += scoretoadd;
+      document.getElementById("score").innerText = (" Score: " + score)
+      console.log("You gained " + scoretoadd + " points this round.")
+      if (level > 0)
+        setTimeout(reset, 750)
+    } else {
+      resetfull();
     }
-    if (scoretoadd < 0)
-      scoretoadd = 0;
-    score += scoretoadd;
-    document.getElementById("score").innerText = (" Score: " + score)
-    console.log("You gained " + scoretoadd + " points this round.")
-    if (level >= 0)
-      setTimeout(reset, 750)
-    else 
-      resetfull()
-    }
-    }
+  }
   function reset(){
     for (var i = 0; i < 28; i++){
       document.getElementById(i + 1).style.backgroundColor = "#808080"
