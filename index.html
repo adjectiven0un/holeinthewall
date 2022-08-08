@@ -112,7 +112,9 @@
   
   
   <script>
+  //set backend array to all inactive 
   var activearray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  //changes active state of a block
   function dothing(num) {
     
     var actionperformed = false
@@ -135,31 +137,37 @@
     
     
   }
+    //returns whether or not a block is on the edge
   function isEdge(num){
     var edgeblocks = [1, 2, 3, 4, 5, 6, 7, 8, 14, 15, 21, 22, 23, 24, 25, 26, 27, 28]
     if (edgeblocks.includes(num + 1))
       return true
   }
+    //set the round number
   var level = 1;
   
   
-  
+  //set template array active state to all inactive
   var templateblocks = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  //generate a new template array
   function generategrid(){
     
-    
+    //next level
     level ++;
+    //set all grey
     for (var i = 0; i < 28; i++){
       document.getElementById("a" + (i + 1)).style.backgroundColor = "#808080"
     }
+    //required blocks in each level
     var wallarray = [3, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8]
-    
+    //always 8 after r11
     if (level < 11)
       holes = wallarray[level];
     else 
       holes = 8;
-    
+    //set the holes
     for (var i = 0; i < holes; i++){
+      //top row rule
       if (level == 2){
         var replace = Math.floor(28 * Math.random())
       } else {
@@ -172,6 +180,7 @@
         templateblocks[replace] = 1;
       }
     }
+    //set the required blocks to white
     for (var i = 0; i < 28; i++){
       if (templateblocks[i] == 1){
         document.getElementById("a" + (i + 1)).style.backgroundColor = "#FFFFFF"
@@ -189,16 +198,17 @@
   var highscore = 0;
   var music = new Audio("voting.mp3");
   
-  
+  //checks how many blocks you got right and returns score accordingly, then calls generategrid() again if there is time left
   function comparison(){
     var scoretoadd = 0;
+    //start timer!
     if (started == false) {
       started = true;
       timeinterval = setInterval(time, 1000);
       music.play();
     }
     if (timer > 0) {
-
+      //color the blocks depending on whether or not they are correct, then add or subtract score
       for (var i = 0; i < 28; i++){
         if (activearray[i] == 1 && templateblocks[i] == 1){
           document.getElementById(i + 1).style.backgroundColor = "#00FF00"
@@ -212,19 +222,24 @@
           document.getElementById(i + 1).style.backgroundColor = "#FFFF00"
         }
       }
+      //can't have negative score for round
       if (scoretoadd < 0)
         scoretoadd = 0;
       score += scoretoadd;
       document.getElementById("score").innerText = (" Score: " + score)
       console.log("You gained " + scoretoadd + " points this round.")
+      //reset grids and generate new one after 750 ms
       if (level > 1)
         setTimeout(reset, 750)
+      //instant reset the first time
       else
         reset();
+      //when time runs out, full reset the game
     } else {
       resetfull();
     }
   }
+    //reset grids and generate new one
   function reset(){
     for (var i = 0; i < 28; i++){
       document.getElementById(i + 1).style.backgroundColor = "#808080"
@@ -233,12 +248,13 @@
     activearray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     generategrid()
   }
-
+  //timer
   function time(){
     if (timer > 0) {
       timer -= 1;
       document.getElementById("time").innerText = (" Time: " + timer + "s");
     }
+    //when time runs out, instantly check
     if (timer < 1) {
       document.getElementById("time").innerText = (" Time's up! ");
       clearInterval(timeinterval);
@@ -262,6 +278,7 @@
     score += scoretoadd;
     document.getElementById("score").innerText = (" Score: " + score)
     console.log("You gained " + scoretoadd + " points this round.")
+      //highscore set
       if (score > highscore){
         highscore = score;
         
@@ -273,6 +290,7 @@
     
     
   }
+    //full reset
   function resetfull() {
     clearInterval(timeinterval);
     timer = 120;
