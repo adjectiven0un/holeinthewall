@@ -85,7 +85,7 @@
   <span id = "a19" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
   <span id = "a20" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
   <span id = "a21" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
-  <span id = "highscore" style = "padding:10px; text-align:center:"> High Score: 0 </span>
+  <span id = "highscore" style = "padding:10px; text-align:center:"> High Score: Loading... </span>
   <p id = "separator7" style = "font-size: 37.5%;">ㅤ</p>
   
   <span id = "a22" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
@@ -114,6 +114,13 @@
   <script>
   //set backend array to all inactive 
   var activearray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  //if this is your first time, create a localstorage
+  if (localStorage.getItem('high_score') === null){
+    localStorage.setItem('high_score', 0);
+    document.getElementById("highscore").innerText = (" High score: " + 0);
+  } else {
+    document.getElementById("highscore").innerText = (" High score: " + localStorage.getItem('high_score'));
+  }
   //changes active state of a block
   function dothing(num) {
     
@@ -281,7 +288,7 @@
       //highscore set
       if (score > highscore){
         highscore = score;
-        
+        localStorage.setItem('high_score', highscore);
         document.getElementById("highscore").innerText = (" High score: " + highscore);
         console.log("Acknowledged new highscore")
       }
