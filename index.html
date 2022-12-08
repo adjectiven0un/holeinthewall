@@ -2,7 +2,7 @@
   <html>
   <body>
   <title>Hole in the Wall simulator</title>
-  <meta name = "description" content = "Version 0.1.1">
+  <meta name = "description" content = "Version 0.1.2">
   <link rel="stylesheet" href="stylesheet.css">
   <div style = "text-align:center">
   <p id = "title" style = "color:black;">Hole in the wall simulator</p>
@@ -28,7 +28,7 @@
   <span id = "12" style = "padding: 10px; background-color: #808080; text-align:center;" onclick = "dothing(11)" class = "unselectable">ㅤ</span>
   <span id = "13" style = "padding: 10px; background-color: #808080; text-align:center;" onclick = "dothing(12)" class = "unselectable">ㅤ</span>
   <span id = "14" style = "padding: 10px; background-color: #808080; text-align:center;" onclick = "dothing(13)" class = "unselectable">ㅤ</span>
-  <span id = "score" style = "padding: 10px; text-align: center;"> Score: 0 </span>
+  
   <p id = "separator2" style = "font-size: 37.5%;">ㅤ</p>
 
   
@@ -40,7 +40,7 @@
   <span id = "19" style = "padding: 10px; background-color: #808080; text-align:center;" onclick = "dothing(18)" class = "unselectable">ㅤ</span>
   <span id = "20" style = "padding: 10px; background-color: #808080; text-align:center;" onclick = "dothing(19)" class = "unselectable">ㅤ</span>
   <span id = "21" style = "padding: 10px; background-color: #808080; text-align:center;" onclick = "dothing(20)" class = "unselectable">ㅤ</span>
-  <span id = "time" style = "padding: 10px; text-align:center;"> Time: 120s </span>
+  
   <p id = "separator3" style = "font-size: 37.5%;">ㅤ</p>
   
   <span id = "22" style = "padding: 10px; background-color: #808080; text-align:center;" onclick = "dothing(21)" class = "unselectable">ㅤ</span>
@@ -54,15 +54,16 @@
   <span id = "check" style = "padding:10px; background-color:#00ff00; text-color:#008000; text-align:center;" onclick = "comparison()">✓</span>
   <span id = "filler1" style = "padding:10px; background-color:#FFFFFF; text-align:center;">ㅤ</span>
   <span id = "filler2" style = "padding:10px; background-color:#FFFFFF; text-align:center;">ㅤ</span>
+  <span id = "score" style = "padding: 10px; text-align: center;"> Score: 0 </span>
+  <span id = "time" style = "padding: 10px; text-align:center;"> Time: 120s </span>
   <span id = "filler3" style = "padding:10px; background-color:#FFFFFF; text-align:center;">ㅤ</span>
   <span id = "filler4" style = "padding:10px; background-color:#FFFFFF; text-align:center;">ㅤ</span>
-  <span id = "filler5" style = "padding:10px; background-color:#FFFFFF; text-align:center;">ㅤ</span>
+  
   <span id = "check" style = "padding:10px; background-color:#00ff00; text-color:#008000; text-align:center;" onclick = "comparison()">✓</span>
   <p id = "separator4">ㅤ</p>
-
-
-
-
+  </div>
+  
+  <div style = "text-align:center">
   <span id = "a1" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
   <span id = "a2" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
   <span id = "a3" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
@@ -88,7 +89,6 @@
   <span id = "a19" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
   <span id = "a20" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
   <span id = "a21" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
-  <span id = "highscore" style = "padding:10px; text-align:center:"> High Score: Loading... </span>
   <p id = "separator7" style = "font-size: 37.5%;">ㅤ</p>
   
   <span id = "a22" style = "padding: 10px; background-color: #808080; text-align:center;">ㅤ</span>
@@ -101,7 +101,7 @@
   <p id = "separator8" style = "font-size: 100%;">ㅤ</p>
   </div>
   <div style = "text-align:center">
-  <span id = "reset" style = "padding:10px; background-color: #FF0000; text-align:center:" onclick = "resetfull()">⟳</span>
+  <span id = "reset" style = "padding:10px; background-color: #FF0000; text-align:center:" onclick = "resetfull()">⟳</span><span id = "highscore" style = "padding:10px; text-align:center:"> High Score: Loading... </span>
   <p id = "instructions0" style = "padding:10px;">ㅤ</p>
   <p id = "instructions1" style = "padding:10px;">Guide: </p>
   <p id = "instructions2" style = "padding:10px;">Fill the holes in the lower wall by placing blocks in the upper wall.</p>
@@ -330,4 +330,3 @@
   
 
   <html>
-
